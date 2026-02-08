@@ -1,143 +1,119 @@
-!doctype html
-html lang=en
-head
-  meta charset=utf-8 
-  meta name=viewport content=width=device-width,initial-scale=1 
-  titleTimeless Jewel Trade Link Generatortitle
-  style
-    body { font-family system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin 24px; max-width 980px; }
-    h1 { margin 0 0 8px 0; }
-    p { margin 6px 0 16px 0; color #333; }
-    .row { display grid; grid-template-columns 1fr 1fr; gap 12px; }
-    .row3 { display grid; grid-template-columns 1fr 1fr 1fr; gap 12px; }
-    label { display block; font-weight 600; margin 10px 0 6px; }
-    input, textarea, select { width 100%; box-sizing border-box; padding 10px; border 1px solid #bbb; border-radius 8px; }
-    textarea { min-height 120px; resize vertical; }
-    .btns { display flex; gap 10px; margin 14px 0; flex-wrap wrap; }
-    button { padding 10px 14px; border 1px solid #444; background #111; color #fff; border-radius 10px; cursor pointer; }
-    button.secondary { background #fff; color #111; }
-    .small { font-size 12px; color #555; }
-    .out { margin-top 18px; }
-    .card { border 1px solid #ddd; border-radius 12px; padding 12px; margin 10px 0; }
-    .card h3 { margin 0 0 6px 0; displayflex; align-itemscenter; gap10px; }
-    .pill { font-size 12px; border 1px solid #ccc; padding 2px 8px; border-radius 999px; color #333; }
-    a { word-break break-all; }
-    .warn { background #fff7e6; border 1px solid #ffd38a; padding 10px; border-radius 10px; }
-    .ok { background #eefaf0; border 1px solid #bfe8c7; padding 10px; border-radius 10px; }
-  style
-head
-body
-  h1Timeless Jewel Trade Link Generatorh1
-  p
-    Paste acceptable seeds (and optionally a Vilsol URL). Generates PoE trade searches for
-    bBrutal Restraintb across conqueror names.
-  p
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Timeless Jewel Trade Link Generator</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 24px; max-width: 980px; }
+    h1 { margin: 0 0 8px 0; }
+    p { margin: 6px 0 16px 0; color: #333; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    label { display: block; font-weight: 600; margin: 10px 0 6px; }
+    input, textarea, select { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #bbb; border-radius: 8px; }
+    textarea { min-height: 120px; resize: vertical; }
+    .btns { display: flex; gap: 10px; margin: 14px 0; flex-wrap: wrap; }
+    button { padding: 10px 14px; border: 1px solid #444; background: #111; color: #fff; border-radius: 10px; cursor: pointer; }
+    button.secondary { background: #fff; color: #111; }
+    .small { font-size: 12px; color: #555; }
+    .out { margin-top: 18px; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 12px; margin: 10px 0; }
+    .card h3 { margin: 0 0 6px 0; display:flex; align-items:center; gap:10px; }
+    .pill { font-size: 12px; border: 1px solid #ccc; padding: 2px 8px; border-radius: 999px; color: #333; }
+    a { word-break: break-all; }
+    .warn { background: #fff7e6; border: 1px solid #ffd38a; padding: 10px; border-radius: 10px; }
+    .ok { background: #eefaf0; border: 1px solid #bfe8c7; padding: 10px; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Timeless Jewel Trade Link Generator</h1>
+  <p>Paste acceptable seeds (and optionally a Vilsol URL). Generates PoE trade searches for <b>Brutal Restraint</b> across all conqueror names.</p>
 
-  div class=row
-    div
-      label for=leagueLeaguelabel
-      input id=league value=Phrecia 2.0 
-      div class=smallMust match the trade site league name exactly.div
-    div
-    div
-      label for=statusSeller statuslabel
-      select id=status
-        option value=online selectedOnlineoption
-        option value=anyAny (online + offline)option
-      select
-      div class=smallTrade filter for seller online status.div
-    div
-  div
+  <div class="row">
+    <div>
+      <label for="league">League</label>
+      <input id="league" value="Phrecia 2.0" />
+      <div class="small">Must match the trade site league name exactly.</div>
+    </div>
+    <div>
+      <label for="status">Seller status</label>
+      <select id="status">
+        <option value="online" selected>Online</option>
+        <option value="any">Any (online + offline)</option>
+      </select>
+      <div class="small">Trade filters: online vs any.</div>
+    </div>
+  </div>
 
-  div class=row
-    div
-      label for=saleTypeTrade modelabel
-      select id=saleType
-        option value=all selectedInstant Buyout + In Personoption
-        option value=buyoutInstant Buyout onlyoption
-        option value=pricedIn Person onlyoption
-      select
-      div class=small
-        Fixes the PoE trade default we explicitly set sale type so it won’t default to “In person”.
-      div
-    div
-    div
-      label for=sortSortlabel
-      select id=sort
-        option value=price_asc selectedPrice Ascoption
-        option value=price_descPrice Descoption
-        option value=time_descTime Newestoption
-      select
-      div class=smallSorting of search results.div
-    div
-  div
+  <div class="row">
+    <div>
+      <label for="itemName">Item name</label>
+      <input id="itemName" value="Brutal Restraint" />
+      <div class="small">Leave as Brutal Restraint unless you know you want a different timeless jewel.</div>
+    </div>
+    <div>
+      <label for="itemType">Item type</label>
+      <input id="itemType" value="Timeless Jewel" />
+      <div class="small">This keeps results sane on trade.</div>
+    </div>
+  </div>
 
-  div class=row
-    div
-      label for=itemNameItem namelabel
-      input id=itemName value=Brutal Restraint 
-      div class=smallLeave as Brutal Restraint unless you want a different Timeless Jewel.div
-    div
-    div
-      label for=itemTypeItem typelabel
-      input id=itemType value=Timeless Jewel 
-      div class=smallKeeps results sane on trade.div
-    div
-  div
+  <label for="vilsolUrl">Vilsol URL (optional)</label>
+  <input id="vilsolUrl" placeholder="https://vilsol.github.io/timeless-jewels/tree?..." />
+  <div class="small">If it contains <code>seed=</code> values, they will be added automatically.</div>
 
-  label for=vilsolUrlVilsol URL (optional)label
-  input id=vilsolUrl placeholder=httpsvilsol.github.iotimeless-jewelstree... 
-  div class=smallIf it contains codeseed=code values, they will be added automatically.div
+  <label for="seeds">Seeds (paste numbers; commas/spaces/newlines all ok)</label>
+  <textarea id="seeds" placeholder="621, 1328, 3510, ..."></textarea>
 
-  label for=seedsSeeds (paste numbers; commasspacesnewlines all ok)label
-  textarea id=seeds placeholder=621, 1328, 3510, ...textarea
+  <div class="row3">
+    <div>
+      <label for="onlyConqueror">Generate for</label>
+      <select id="onlyConqueror">
+        <option value="all" selected>All (Asenath, Balbala, Nasima, Deshret)</option>
+        <option value="Asenath">Asenath only</option>
+        <option value="Balbala">Balbala only</option>
+        <option value="Nasima">Nasima only</option>
+        <option value="Deshret">Deshret only</option>
+      </select>
+    </div>
+    <div>
+      <label for="sort">Sort</label>
+      <select id="sort">
+        <option value="price_asc" selected>Price: Asc</option>
+        <option value="price_desc">Price: Desc</option>
+        <option value="time_desc">Time: Newest</option>
+      </select>
+    </div>
+    <div>
+      <label for="minCount">Match count</label>
+      <input id="minCount" type="number" min="1" max="50" value="1" />
+      <div class="small">Keep at 1 for “OR” matching: any acceptable seed.</div>
+    </div>
+  </div>
 
-  div class=row3
-    div
-      label for=onlyConquerorGenerate forlabel
-      select id=onlyConqueror
-        option value=all selectedAll (Asenath, Balbala, Nasima, Deshret)option
-        option value=AsenathAsenath onlyoption
-        option value=BalbalaBalbala onlyoption
-        option value=NasimaNasima onlyoption
-        option value=DeshretDeshret onlyoption
-      select
-    div
-    div
-      label for=minCountMatch countlabel
-      input id=minCount type=number min=1 max=50 value=1 
-      div class=smallKeep at 1 for “OR” match any acceptable seed.div
-    div
-    div
-      label&nbsp;label
-      div class=small
-        Tip If your list is huge, trade URLs can get long. You can split your seed list into chunks and generate multiple sets.
-      div
-    div
-  div
+  <div class="btns">
+    <button id="generateBtn">Generate trade links</button>
+    <button class="secondary" id="clearBtn">Clear output</button>
+    <button class="secondary" id="copyAllBtn">Copy all links</button>
+  </div>
 
-  div class=btns
-    button id=generateBtnGenerate trade linksbutton
-    button class=secondary id=clearBtnClear outputbutton
-    button class=secondary id=copyAllBtnCopy all linksbutton
-  div
+  <div id="msg"></div>
+  <div class="out" id="output"></div>
 
-  div id=msgdiv
-  div class=out id=outputdiv
-
-script
+<script>
 (function () {
   const CONQUEROR_TO_STAT_ID = {
-    Asenath explicit.pseudo_timeless_jewel_asenath,
-    Balbala explicit.pseudo_timeless_jewel_balbala,
-    Nasima explicit.pseudo_timeless_jewel_nasima,
-    Deshret explicit.pseudo_timeless_jewel_deshret,
+    Asenath: "explicit.pseudo_timeless_jewel_asenath",
+    Balbala: "explicit.pseudo_timeless_jewel_balbala",
+    Nasima: "explicit.pseudo_timeless_jewel_nasima",
+    Deshret: "explicit.pseudo_timeless_jewel_deshret",
   };
 
-  const $ = (id) = document.getElementById(id);
+  const $ = (id) => document.getElementById(id);
 
   function parseSeedsFromText(text) {
-    const matches = (text  ).match(bd+bg)  [];
+    const matches = (text || "").match(/\b\d+\b/g) || [];
     const seen = new Set();
     const out = [];
     for (const m of matches) {
@@ -153,9 +129,8 @@ script
   function parseSeedsFromUrl(url) {
     try {
       const u = new URL(url);
-      const seeds = u.searchParams.getAll(seed)
-        .map(s = Number(s))
-        .filter(n = Number.isFinite(n));
+      const seeds = u.searchParams.getAll("seed").map(s => Number(s)).filter(n => Number.isFinite(n));
+      // Dedup preserve order
       const seen = new Set();
       const out = [];
       for (const n of seeds) {
@@ -168,38 +143,31 @@ script
   }
 
   function encodeLeague(league) {
+    // PoE trade uses /trade/search/<league> where <league> is URL-encoded
     return encodeURIComponent(league);
   }
 
-  function buildTradeQuery({statusOpt, saleTypeOpt, itemName, itemType, statId, seeds, minCount, sortOpt}) {
-    const filters = seeds.map(seed = ({
-      id statId,
-      value { min seed, max seed }
+  function buildTradeQuery({statusOpt, itemName, itemType, statId, seeds, minCount, sortOpt}) {
+    const filters = seeds.map(seed => ({
+      id: statId,
+      value: { min: seed, max: seed }
     }));
 
     const sort =
-      sortOpt === price_desc  { price desc } 
-      sortOpt === time_desc  { listed desc } 
-      { price asc };
+      sortOpt === "price_desc" ? { price: "desc" } :
+      sortOpt === "time_desc" ? { "listed": "desc" } :
+      { price: "asc" };
 
     return {
-      query {
-        status { option statusOpt },
-
-         IMPORTANT This prevents PoE trade from defaulting to “In Person” only.
-        trade_filters {
-          filters {
-            sale_type { option saleTypeOpt }  all = Instant Buyout + In Person
-          }
-        },
-
-        name itemName,
-        type itemType,
-        stats [{
-          type count,
-          value { min minCount },
+      query: {
+        status: { option: statusOpt },
+        name: itemName,
+        type: itemType,
+        stats: [{
+          type: "count",
+          value: { min: minCount },
           filters,
-          disabled false
+          disabled: false
         }]
       },
       sort
@@ -207,57 +175,55 @@ script
   }
 
   function buildTradeUrl(league, queryObj) {
-    const base = `httpswww.pathofexile.comtradesearch${encodeLeague(league)}q=`;
+    const base = `https://www.pathofexile.com/trade/search/${encodeLeague(league)}?q=`;
     const json = JSON.stringify(queryObj);
     return base + encodeURIComponent(json);
   }
 
   function showMsg(html, kind) {
-    const el = $(msg);
-    el.innerHTML = `div class=${kind}${html}div`;
+    const el = $("msg");
+    el.innerHTML = `<div class="${kind}">${html}</div>`;
   }
 
-  function clearMsg() { $(msg).innerHTML = ; }
+  function clearMsg() { $("msg").innerHTML = ""; }
 
   function renderLinks(links) {
-    const out = $(output);
-    out.innerHTML = ;
+    const out = $("output");
+    out.innerHTML = "";
     for (const link of links) {
-      const div = document.createElement(div);
-      div.className = card;
+      const div = document.createElement("div");
+      div.className = "card";
       div.innerHTML = `
-        h3${link.conqueror} span class=pill${link.seedsCount} seedsspanh3
-        diva href=${link.url} target=_blank rel=noopener noreferrer${link.url}adiv
+        <h3>${link.conqueror} <span class="pill">${link.seedsCount} seeds</span></h3>
+        <div><a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.url}</a></div>
       `;
       out.appendChild(div);
     }
   }
 
   function getConfig() {
-    const league = $(league).value.trim();
-    const statusSel = $(status).value;
-    const statusOpt = statusSel === any  any  online;
+    const league = $("league").value.trim();
+    const statusSel = $("status").value;
+    const statusOpt = statusSel === "any" ? "any" : "online";
 
-    const saleTypeOpt = $(saleType).value;  all  buyout  priced
+    const itemName = $("itemName").value.trim() || "Brutal Restraint";
+    const itemType = $("itemType").value.trim() || "Timeless Jewel";
 
-    const itemName = $(itemName).value.trim()  Brutal Restraint;
-    const itemType = $(itemType).value.trim()  Timeless Jewel;
+    const urlSeeds = parseSeedsFromUrl($("vilsolUrl").value.trim());
+    const textSeeds = parseSeedsFromText($("seeds").value);
 
-    const urlSeeds = parseSeedsFromUrl($(vilsolUrl).value.trim());
-    const textSeeds = parseSeedsFromText($(seeds).value);
-
-     Merge, dedup preserve order
+    // Merge, dedup preserve order
     const merged = [];
     const seen = new Set();
     for (const n of [...urlSeeds, ...textSeeds]) {
       if (!seen.has(n)) { seen.add(n); merged.push(n); }
     }
 
-    const only = $(onlyConqueror).value;
-    const sortOpt = $(sort).value;
-    const minCount = Math.max(1, Math.min(50, Number($(minCount).value)  1));
+    const only = $("onlyConqueror").value;
+    const sortOpt = $("sort").value;
+    const minCount = Math.max(1, Math.min(50, Number($("minCount").value) || 1));
 
-    return { league, statusOpt, saleTypeOpt, itemName, itemType, seeds merged, only, sortOpt, minCount };
+    return { league, statusOpt, itemName, itemType, seeds: merged, only, sortOpt, minCount };
   }
 
   function generate() {
@@ -265,58 +231,58 @@ script
     const cfg = getConfig();
 
     if (!cfg.league) {
-      showMsg(Please enter a league name., warn);
+      showMsg("Please enter a league name.", "warn");
       return;
     }
     if (cfg.seeds.length === 0) {
-      showMsg(No seeds found. Paste seeds andor a Vilsol URL with codeseed=code., warn);
+      showMsg("No seeds found. Paste seeds and/or a Vilsol URL with <code>seed=</code>.", "warn");
       return;
     }
 
-    const conquerors = cfg.only === all
-       Object.keys(CONQUEROR_TO_STAT_ID)
-       [cfg.only];
+    const conquerors = cfg.only === "all"
+      ? Object.keys(CONQUEROR_TO_STAT_ID)
+      : [cfg.only];
 
     const links = [];
     for (const c of conquerors) {
       const statId = CONQUEROR_TO_STAT_ID[c];
       const q = buildTradeQuery({
-        statusOpt cfg.statusOpt,
-        saleTypeOpt cfg.saleTypeOpt,
-        itemName cfg.itemName,
-        itemType cfg.itemType,
+        statusOpt: cfg.statusOpt,
+        itemName: cfg.itemName,
+        itemType: cfg.itemType,
         statId,
-        seeds cfg.seeds,
-        minCount cfg.minCount,
-        sortOpt cfg.sortOpt
+        seeds: cfg.seeds,
+        minCount: cfg.minCount,
+        sortOpt: cfg.sortOpt
       });
       const url = buildTradeUrl(cfg.league, q);
-      links.push({ conqueror c, url, seedsCount cfg.seeds.length });
+      links.push({ conqueror: c, url, seedsCount: cfg.seeds.length });
     }
 
     renderLinks(links);
-    showMsg(`Generated ${links.length} trade link(s).`, ok);
+    showMsg(`Generated ${links.length} trade link(s).`, "ok");
   }
 
   async function copyAll() {
-    const anchors = Array.from(document.querySelectorAll(#output a));
-    if (anchors.length === 0) {
-      showMsg(Nothing to copy yet — generate links first., warn);
+    const cards = Array.from(document.querySelectorAll("#output a"));
+    if (cards.length === 0) {
+      showMsg("Nothing to copy yet — generate links first.", "warn");
       return;
     }
-    const text = anchors.map(a = a.href).join(n);
+    const text = cards.map(a => a.href).join("\n");
     try {
       await navigator.clipboard.writeText(text);
-      showMsg(`Copied ${anchors.length} link(s) to clipboard.`, ok);
+      showMsg(`Copied ${cards.length} link(s) to clipboard.`, "ok");
     } catch {
-      showMsg(Clipboard copy blocked by browser. You can manually select and copy the links., warn);
+      // Fallback if clipboard API blocked
+      showMsg("Clipboard copy blocked by browser. You can manually select and copy the links.", "warn");
     }
   }
 
-  $(generateBtn).addEventListener(click, generate);
-  $(clearBtn).addEventListener(click, () = { $(output).innerHTML = ; clearMsg(); });
-  $(copyAllBtn).addEventListener(click, copyAll);
+  $("generateBtn").addEventListener("click", generate);
+  $("clearBtn").addEventListener("click", () => { $("output").innerHTML = ""; clearMsg(); });
+  $("copyAllBtn").addEventListener("click", copyAll);
 })();
-script
-body
-html
+</script>
+</body>
+</html>
